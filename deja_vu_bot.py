@@ -32,7 +32,7 @@ dv_bot = BotHandler("443743656:AAH-NUwl0gDj-0W8hYMaUQUc5IcEuh-wOOU")
 triggers = ["deja vu",
             "higher on the street",
             "calling you",
-            "standing on my feet!"]
+            "standing on my feet"]
 
 responses = ["I've just been in this place before!",
              "And I know it's my time to come home!",
