@@ -1,4 +1,8 @@
 import requests 
+from flask import Flask
+
+app = Flask(__name__, host='0.0.0.0')
+
 
 class BotHandler:
     
@@ -32,12 +36,14 @@ dv_bot = BotHandler("443743656:AAH-NUwl0gDj-0W8hYMaUQUc5IcEuh-wOOU")
 triggers = ["deja vu",
             "higher on the street",
             "calling you",
-            "standing on my feet"]
+            "standing on my feet!"]
 
 responses = ["I've just been in this place before!",
              "And I know it's my time to come home!",
              "And the subject's a mystery!",
              "It's so hard when I try to believe! Whooooaaa!"]
+             
+@app.route('/')
 def main():
     
     new_offset = None
@@ -55,9 +61,12 @@ def main():
                 dv_bot.send_message(last_chat_id,responses[i])
 
         new_offset = last_update_id + 1
-        
-if __name__ == '__main__':  
+    
+    return
+    
+if __name__ == '__main__':
     try:
-        main()
+        from os import environ
+        app.run(debug=False, port=environ.get("PORT", 5000))
     except KeyboardInterrupt:
         exit()
