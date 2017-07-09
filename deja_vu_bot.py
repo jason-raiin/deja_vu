@@ -1,8 +1,4 @@
 import requests 
-from flask import Flask
-
-app = Flask(__name__, host='0.0.0.0')
-
 
 class BotHandler:
     
@@ -42,8 +38,6 @@ responses = ["I've just been in this place before!",
              "And I know it's my time to come home!",
              "And the subject's a mystery!",
              "It's so hard when I try to believe! Whooooaaa!"]
-             
-@app.route('/')
 def main():
     
     new_offset = None
@@ -63,10 +57,9 @@ def main():
         new_offset = last_update_id + 1
     
     return
-    
-if __name__ == '__main__':
+        
+if __name__ == '__main__':  
     try:
-        from os import environ
-        app.run(debug=False, port=environ.get("PORT", 5000))
+        main()
     except KeyboardInterrupt:
         exit()
